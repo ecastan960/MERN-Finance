@@ -7,16 +7,15 @@ loadType(mongoose);
 const TransactionSchema = new Schema(
   {
     buyer: {
-      type: mongoose.Types.Currency,
-      currency: "USD",
-      get: (v) => v / 100,
+      type: String,
+      required: true,
     },
     amount: {
       type: mongoose.Types.Currency,
       currency: "USD",
       get: (v) => v / 100,
     },
-    ProductIds: [
+    productIds: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Product",
@@ -31,6 +30,6 @@ const TransactionSchema = new Schema(
   }
 );
 
-const Transaction = mongoose.model("Product", TransactionSchema);
+const Transaction = mongoose.model("Transaction", TransactionSchema);
 
 export default Transaction;
